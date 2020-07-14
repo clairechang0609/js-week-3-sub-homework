@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五大性格特質心理測驗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="img/traits-test.ico">
+    <meta name="description" content="五大性格特質心理測驗">
+
+    <meta property="og:title" content="五大性格特質心理測驗" />
+    <meta property="og:description" content="五大性格特質心理測驗‎" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="www.index.com" />
+    <meta property="og:image" content="img/traits-test-img.png" />
+
+    <link rel="apple-touch-icon" href="img/traits-test-apple-touch-icon.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="sass/all.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <div class="start" v-if="questionIndex === -1">
+            <div class="pic"></div>
+                <div class="title">
+                    <h3>五大性格特質</h3><br>
+                    <div>
+                        <h3>心理測驗</h3>
+                        <span>Big Five personality<br>traits test</span>
+                    </div>
+                </div>
+                <div class="description">
+                    <p>{{ description }}</p>
+                    <button type="button" @click.prevent="questionIndex = 0">開始測驗</button>
+                </div>
+            </div>
+            
+            <div class="question" v-for="(problem, index) in problems" :key="index" v-if="questionIndex === index">
+                <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
+                <button type="button" class="back-btn" @click.prevent="questionIndex -= 1">←</button>
+                <div class="left">
+                    <p>Que.</p>
+                    <h5> {{ problem.problem }}</h5>
+                </div>
+                <div class="right">
+                    <p>{{ index+1 + '/' + 10 }}</p>
+                    <ul>
+                        <li v-for="(item, i) in problem.options" :key="index + i">
+                            <input type="radio" :id="problem.id + i" :name="problem.id" :value="item.fraction" v-model="problem.score">
+                            <label :for="problem.id + i">{{item.description}}</label> 
+                        </li>
+                    </ul>
+                    <button type="button" class="btn" v-if="index < 9" @click="nextPage(problem.id)">下一題</button>
+                    <button type="button" class="btn" v-else @click="getResult(problem.id)" @click.prevent="resultIndex = 0">看結果</button>
+                </div>
+            </div>
+        </div>
+        <div class="showContent" v-if="showResult">
+            <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
+            <ul class="menu">
+                <li v-for="(item, key) in traitDescription" :key="key + '_1'"><a :href="`index.html#${item.traitEn}`">{{item.traitZh}}</a></li>
+            </ul>
+            <div class="pic"></div>
+            <ul class="card">
+                <li v-for="(item, key) in traitDescription" :key="key + '_2'" :id="item.traitEn">
+                    <div class="title">
+                        <h3>{{item.traitZh}}<br><span>{{item.traitEn}}</span></h3>
+                        <p>{{item.desc}}</p>
+                    </div>
+                    <div class="analysis">
+                        <h4>總分：{{item.score}}</h4>
+                        <div v-if="item.score <= degree.low">
+                            <h3>低</h3>
+                            <h5>{{item.low}}</h5>
+                        </div>
+                        <div v-else-if="item.score = degree.middle">
+                            <h3>中</h3>
+                            <h5>{{item.middle}}</h5>
+                            <p>高＿{{item.high}}</p>
+                            <p>低＿{{item.low}}</p>
+                        </div>
+                        <div v-else>
+                            <h3>高</h3>
+                            <h5>{{item.high}}</h5>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button type="button" @click="reset()">重新測驗</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/all.js"></script>
+</body>
+</html>

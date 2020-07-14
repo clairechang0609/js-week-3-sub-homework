@@ -1,0 +1,248 @@
+$black: rgb(0,0,0)
+$white: rgb(255,255,255)
+$gray: rgb(100,100,100)
+$purple: #4F61FF
+$dark-purple: #3243e0
+
+@mixin media-w1024
+    @media (max-width: 1024px)
+        @content
+    
+@mixin media-w896
+    @media (max-width: 896px)
+        @content
+    
+@mixin media-w767
+    @media (max-width: 767px)
+        @content
+    
+@mixin media-w667
+    @media (max-width: 667px)
+        @content
+
+@mixin media-w568
+    @media (max-width: 568px)
+        @content
+    
+@mixin media-w414
+    @media (max-width: 414px)
+        @content
+    
+@mixin media-w375
+    @media (max-width: 375px)
+        @content
+
+
+        
+.wrap
+    margin: 0 auto
+.pic
+    width: 100%
+    height: 300px
+    background-size: cover
+    background-position: center
+    background-image: url(../img/photo-1530274484058-c2b32e70c9ba.jpeg)
+.content
+    .start
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        .title
+            padding: 70px 100px 40px
+            div
+                display: flex
+            h3
+                font-size: 40px
+            span
+                font-size: 17px
+                font-weight: 200
+                line-height: 1.2
+                padding-left: 15px
+        .description
+            padding: 0 70px 70px
+            align-self: flex-end
+            display: flex
+            p
+                width: 400px
+                line-height: 1.5
+                font-size: 14px
+                padding-right: 25px
+                text-align: justify
+            button
+                position: relative
+                width: 250px
+                background: $purple
+                color: $white
+                font-size: 15px
+                &::after
+                    content: '→'
+                    position: absolute
+                    left: 65%
+                    transition: 0.3s ease-in-out
+                &:hover
+                    background: $dark-purple
+                    &::after
+                        left: 75%
+    .question
+        display: flex
+        position: fixed
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        .name
+            position: absolute
+            left: 80px
+            bottom: 30px
+            color: $gray
+            font-size: 15.5px
+            span
+                font-size: 12px
+        .back-btn
+            position: absolute
+            font-size: 15px
+            color: $white
+            padding: 15px
+            background: $purple
+            &:hover
+                background: $dark-purple
+        .left
+            width: 50%
+            background: rgba($purple, 0.1)
+            padding: 100px 50px
+            p
+                font-size: 35px
+                padding-bottom: 30px
+                font-style: italic
+                font-weight: 500
+            h5
+                font-size: 25px
+                padding-left: 30px
+        .right
+            width: 50%
+            display: flex
+            flex-direction: column
+            align-items: center
+            p
+                align-self: flex-end
+                padding: 30px
+            ul
+                padding-top: 50px
+                li
+                    padding: 10px 0 10px 30px
+                    font-size: 15px
+                    text-indent: -25px;
+            button
+                position: fixed
+                width: 50%
+                right: 0
+                bottom: 0
+                padding: 20px
+                background: $purple
+                color: $white
+                font-size: 15px
+                &::after
+                    content: '→'
+                    position: absolute
+                    left: 60%
+                    transition: 0.3s ease-in-out
+                &:hover
+                    background: $dark-purple
+                    &::after
+                        left: 70%
+.showContent
+    display: flex
+    flex-direction: column
+    .name
+        position: absolute
+        left: 100px
+        top: 30px
+        color: $white
+        font-size: 15.5px
+        span
+            font-size: 12px
+    .menu
+        position: absolute
+        right: 50px
+        top: 30px
+        display: flex
+        li
+            a
+                text-decoration: none
+                color: $white
+                padding: 10px
+                border-bottom: 3px solid transparent
+                &:hover
+                    border-bottom: 3px solid $purple
+    .pic
+        width: 100%
+        height: 300px
+        padding-bottom: 50px
+        background-size: cover
+        background-position: center
+        background-image: url(../img/photo-1464639351491-a172c2aa2911.jpeg)
+    .card
+        padding: 50px 0
+        li
+            &:nth-child(2n)
+                background: rgba($purple, 0.1)
+            .title
+                position: relative
+                padding: 40px 150px 30px
+                display: flex
+                justify-content: space-between
+                &::after
+                    content: ''
+                    position: absolute
+                    bottom: 0
+                    width: 70px
+                    height: 1px
+                    background: $black
+                h3
+                    width: 40%
+                    font-size: 35px
+                    line-height: 1
+                    span
+                        font-size: 17px
+                p
+                    width: 60%
+                    font-size: 14px
+                    line-height: 1.5    
+            .analysis
+                padding: 30px 150px 40px
+                line-height: 1.5
+                h4
+                    font-size: 20px
+                    padding-bottom: 10px
+                h3
+                    font-size: 40px
+                    padding-bottom: 10px
+                h5
+                    font-size: 17px
+                    padding-bottom: 10px
+                p
+                    font-size: 14px
+                    text-indent: -28px
+                    padding-left: 28px
+                    padding-top: 5px
+    button
+        position: relative
+        width: 300px
+        padding: 20px
+        background: $purple
+        color: $white
+        font-size: 15px
+        margin: 0 100px 50px
+        align-self: flex-end
+        &::after
+            content: '→'
+            position: absolute
+            left: 65%
+            transition: 0.3s ease-in-out
+        &:hover
+                background: $dark-purple
+                &::after
+                    left: 75%
+
+
+
