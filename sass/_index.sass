@@ -44,9 +44,11 @@ $dark-purple: #3243e0
     background-image: url(../img/photo-1530274484058-c2b32e70c9ba.jpeg)
 .content
     .start
-        display: flex
+        display: none
         flex-direction: column
         justify-content: flex-start
+        &.show
+            display: flex
         .title
             padding: 70px 100px 40px
             div
@@ -84,12 +86,14 @@ $dark-purple: #3243e0
                     &::after
                         left: 75%
     .question
-        display: flex
+        display: none
         position: fixed
         top: 0
         bottom: 0
         left: 0
         right: 0
+        &.show
+            display: flex
         .name
             position: absolute
             left: 80px
@@ -150,9 +154,11 @@ $dark-purple: #3243e0
                     background: $dark-purple
                     &::after
                         left: 70%
-.showContent
-    display: flex
+.result
+    display: none
     flex-direction: column
+    &.show
+        display: flex
     .name
         position: absolute
         left: 100px
@@ -177,18 +183,17 @@ $dark-purple: #3243e0
     .pic
         width: 100%
         height: 300px
-        padding-bottom: 50px
         background-size: cover
         background-position: center
         background-image: url(../img/photo-1464639351491-a172c2aa2911.jpeg)
     .card
-        padding: 50px 0
+        padding: 30px 0 
         li
             &:nth-child(2n)
                 background: rgba($purple, 0.1)
             .title
                 position: relative
-                padding: 40px 150px 30px
+                padding: 50px 150px 30px
                 display: flex
                 justify-content: space-between
                 &::after
@@ -209,7 +214,7 @@ $dark-purple: #3243e0
                     font-size: 14px
                     line-height: 1.5    
             .analysis
-                padding: 30px 150px 40px
+                padding: 30px 150px 50px
                 line-height: 1.5
                 h4
                     font-size: 20px

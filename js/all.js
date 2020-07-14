@@ -8,7 +8,6 @@ let app = new Vue({
         problems: [],
         traitDescription: {},
         questionIndex: -1,
-        resultIndex: 0,
         showResult: false
     },
     created() {
@@ -44,7 +43,6 @@ let app = new Vue({
                             score: 0
                         });
                     });
-                    console.log(vm.traitDescription);
                 });
         },
         nextPage(id) {
@@ -57,7 +55,7 @@ let app = new Vue({
         getResult(id) {
             const vm = this;
             if (document.querySelector(`input[name="${id}"]:checked`)) {
-                this.questionIndex += 1;
+                this.questionIndex = 10;
                 vm.showResult = true;
                 console.log(vm.problems);
                 vm.traitsEn.forEach( trait => {
@@ -72,9 +70,6 @@ let app = new Vue({
             }
             console.log(vm.traitDescription);
         },
-        render() {
-
-        },
         reset(){
             this.questionIndex = -1,
             this.showResult = false;
@@ -82,6 +77,7 @@ let app = new Vue({
             this.problems.forEach( (problem) => {
                 problem.score = 0;
             });
+            window.location = 'index.html';
         }
     }
 })

@@ -21,14 +21,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="sass/all.css">
 </head>
 <body>
     <div class="wrap">
         <div class="content">
-            <div class="start" v-if="questionIndex === -1">
+            <div class="start" :class="{'show': questionIndex === -1}">
             <div class="pic"></div>
                 <div class="title">
                     <h3>五大性格特質</h3><br>
@@ -43,7 +41,7 @@
                 </div>
             </div>
             
-            <div class="question" v-for="(problem, index) in problems" :key="index" v-if="questionIndex === index">
+            <div class="question" v-for="(problem, index) in problems" :key="index" :class="{'show': questionIndex === index}">
                 <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
                 <button type="button" class="back-btn" @click.prevent="questionIndex -= 1">←</button>
                 <div class="left">
@@ -59,11 +57,11 @@
                         </li>
                     </ul>
                     <button type="button" class="btn" v-if="index < 9" @click="nextPage(problem.id)">下一題</button>
-                    <button type="button" class="btn" v-else @click="getResult(problem.id)" @click.prevent="resultIndex = 0">看結果</button>
+                    <button type="button" class="btn" v-else @click="getResult(problem.id)">看結果</button>
                 </div>
             </div>
         </div>
-        <div class="showContent" v-if="showResult">
+        <div class="result" :class="{'show': showResult}">
             <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
             <ul class="menu">
                 <li v-for="(item, key) in traitDescription" :key="key + '_1'"><a :href="`#${item.traitEn}`">{{item.traitZh}}</a></li>
