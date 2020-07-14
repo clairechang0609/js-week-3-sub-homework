@@ -66,7 +66,7 @@
         <div class="showContent" v-if="showResult">
             <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
             <ul class="menu">
-                <li v-for="(item, key) in traitDescription" :key="key + '_1'"><a :href="`index.html#${item.traitEn}`">{{item.traitZh}}</a></li>
+                <li v-for="(item, key) in traitDescription" :key="key + '_1'"><a :href="`#${item.traitEn}`">{{item.traitZh}}</a></li>
             </ul>
             <div class="pic"></div>
             <ul class="card">
