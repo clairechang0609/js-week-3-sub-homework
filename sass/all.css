@@ -192,7 +192,7 @@ a:hover, button:hover, input[type=button]:hover {
 
 .content .question .name {
   position: absolute;
-  left: 80px;
+  left: 65px;
   bottom: 30px;
   color: #646464;
   font-size: 15.5px;
@@ -216,11 +216,26 @@ a:hover, button:hover, input[type=button]:hover {
 
 .content .question .left {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgba(79, 97, 255, 0.1);
-  padding: 100px 50px;
+  padding: 0px 60px 100px;
 }
 
 .content .question .left p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   font-size: 35px;
   padding-bottom: 30px;
   font-style: italic;
@@ -229,7 +244,6 @@ a:hover, button:hover, input[type=button]:hover {
 
 .content .question .left h5 {
   font-size: 25px;
-  padding-left: 30px;
 }
 
 .content .question .right {
@@ -241,15 +255,19 @@ a:hover, button:hover, input[type=button]:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 60px 80px;
 }
 
 .content .question .right p {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  padding: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
 
 .content .question .right ul {
