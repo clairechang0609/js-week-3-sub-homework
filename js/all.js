@@ -62,8 +62,6 @@ let app = new Vue({
             vm.questionIndex = 10;
             vm.showResult = true;
             vm.openBtn = false;
-            resultBtn.disabled = false; //預設禁止點擊
-            resultBtn.classList.remove('disabled');
             vm.traitsEn.forEach( trait => {
                 vm.problems.forEach( problem => {
                     if (trait === problem.category){
