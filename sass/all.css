@@ -125,12 +125,12 @@ a:hover, button:hover, input[type=button]:hover {
 
 .content .start .title h3 {
   font-size: 40px;
+  line-height: 1;
 }
 
 .content .start .title span {
   font-size: 17px;
   font-weight: 200;
-  line-height: 1.2;
   padding-left: 15px;
 }
 
