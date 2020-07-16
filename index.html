@@ -41,7 +41,7 @@
                 </div>
             </div>
             
-            <div class="question" v-for="(problem, index) in problems" :key="'problem' + index" :class="{'show': questionIndex === index}">
+            <div class="question" v-for="(problem, index) in problems" :key="'problem' + problem.id" :class="{'show': questionIndex === index}">
                 <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
                 <button type="button" class="back-btn" @click.prevent="questionIndex -= 1">←</button>
                 <div class="left">
@@ -51,7 +51,7 @@
                 <div class="right">
                     <p>{{ index+1 + '/' + 10 }}</p>
                     <ul>
-                        <li v-for="(item, i) in problem.options" :key="'option' + i">
+                        <li v-for="(item, i) in problem.options" :key="problem.id + item.fraction">
                             <input type="radio" :id="problem.id + i" :name="problem.id" :value="item.fraction" v-model="problem.score" @click="btnOpen(problem.id)">
                             <label :for="problem.id + i">{{item.description}}</label> 
                         </li>
@@ -64,11 +64,11 @@
         <div class="result" :class="{'show': showResult}">
             <div class="name">五大性格特質心理測驗<br><span>Big Five personality traits test</span></div>
             <ul class="menu">
-                <li v-for="(item, key) in traitDescription" :key="'trait' + key + '_1'"><a :href="`#${item.traitEn}`">{{item.traitZh}}</a></li>
+                <li v-for="(item, key) in traitDescription" :key="'trait_' + item.traitEn"><a :href="`#${item.traitEn}`">{{item.traitZh}}</a></li>
             </ul>
             <div class="pic"></div>
             <ul class="card">
-                <li v-for="(item, key) in traitDescription" :key="'trait' + key + '_2'" :id="item.traitEn">
+                <li v-for="(item, key) in traitDescription" :key="'trait_' + key" :id="item.traitEn">
                     <div class="title">
                         <h3>{{item.traitZh}}<br><span>{{item.traitEn}}</span></h3>
                         <p>{{item.desc}}</p>
