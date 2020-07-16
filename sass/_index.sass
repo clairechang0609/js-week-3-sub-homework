@@ -153,6 +153,11 @@ $dark-purple: #3243e0
                 background: $purple
                 color: $white
                 font-size: 15px
+                trasition: 0.2s ease-in-out
+                &.disabled
+                    pointer-events: none
+                    cursor: default
+                    opacity: 0
                 &::after
                     content: '→'
                     position: absolute

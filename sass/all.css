@@ -289,6 +289,13 @@ a:hover, button:hover, input[type=button]:hover {
   background: #4F61FF;
   color: white;
   font-size: 15px;
+  trasition: 0.2s ease-in-out;
+}
+
+.content .question .right button.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0;
 }
 
 .content .question .right button::after {

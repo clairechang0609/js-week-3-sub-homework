@@ -8,7 +8,8 @@ let app = new Vue({
         problems: [],
         traitDescription: {},
         questionIndex: -1,
-        showResult: false
+        showResult: false,
+        openBtn: false
     },
     created() {
         this.getData();
@@ -43,32 +44,33 @@ let app = new Vue({
                             score: 0
                         });
                     });
+                    console.log(vm.problems)
+                    console.log(vm.traitDescription)
                 });
         },
-        nextPage(id) {
+        btnOpen(id) {
             if (document.querySelector(`input[name="${id}"]:checked`)) {
-                this.questionIndex += 1;
-            } else {
-                alert('您尚未選擇答案');
+                this.openBtn = true;
             }
         },
-        getResult(id) {
+        nextPage() {
+            this.questionIndex += 1;
+            this.openBtn = false;
+        },
+        getResult() {
             const vm = this;
-            if (document.querySelector(`input[name="${id}"]:checked`)) {
-                this.questionIndex = 10;
-                vm.showResult = true;
-                console.log(vm.problems);
-                vm.traitsEn.forEach( trait => {
-                    vm.problems.forEach( problem => {
-                        if (trait === problem.category){
-                            vm.traitDescription[trait].score += problem.score; //把分數放進去scores
-                        }
-                    });
+            vm.questionIndex = 10;
+            vm.showResult = true;
+            vm.openBtn = false;
+            resultBtn.disabled = false; //預設禁止點擊
+            resultBtn.classList.remove('disabled');
+            vm.traitsEn.forEach( trait => {
+                vm.problems.forEach( problem => {
+                    if (trait === problem.category){
+                        vm.traitDescription[trait].score += problem.score; //把分數放進去scores
+                    }
                 });
-            } else {
-                alert('您尚未選擇答案');
-            }
-            console.log(vm.traitDescription);
+            });
         },
         reset(){
             this.questionIndex = -1,
