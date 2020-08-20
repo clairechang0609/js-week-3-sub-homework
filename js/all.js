@@ -44,8 +44,6 @@ let app = new Vue({
                             score: 0
                         });
                     });
-                    console.log(vm.problems)
-                    console.log(vm.traitDescription)
                 });
         },
         btnOpen(id) {
@@ -62,10 +60,10 @@ let app = new Vue({
             vm.questionIndex = 10;
             vm.showResult = true;
             vm.openBtn = false;
-            vm.traitsEn.forEach( trait => {
-                vm.problems.forEach( problem => {
+            vm.problems.forEach( problem => {
+                vm.traitsEn.forEach( trait => {
                     if (trait === problem.category){
-                        vm.traitDescription[trait].score += problem.score; //把分數放進去scores
+                        vm.traitDescription[trait].score += parseInt(problem.score);
                     }
                 });
             });
@@ -74,7 +72,7 @@ let app = new Vue({
             this.questionIndex = -1,
             this.showResult = false;
             this.getData();
-            this.problems.forEach( (problem) => {
+            this.problems.forEach( problem => {
                 problem.score = 0;
             });
             window.location = 'index.html';
